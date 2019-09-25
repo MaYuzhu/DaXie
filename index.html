@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>港口定位导航服务平台</title>
+    <link rel="icon" type="image/x-icon" href="./image/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="./js/OpenLayers/css/ol.css" />
+    <script src="./js/OpenLayers/build/ol.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/layui.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/celiangjuli.css">
+    <link rel="stylesheet" href="./css/driveline.css">
+    <link rel="stylesheet" href="./css/carplay.css">
+    <link rel="stylesheet" href="./css/moniline.css">
+    <link rel="stylesheet" href="./css/fence.css"><!--电子围栏-->
+    <link rel="stylesheet" href="./css/popup_alert.css"><!--自定义弹窗-->
+
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- 地图窗口 -->
+    <script type="text/javascript" src="./js/v3/base/v_0_0_1/map.js"></script>
+
+    <!-- 封装的前端util -->
+    <script type="text/javascript" src="./js/v3/auxiliary.js"></script>
+
+    <!-- 绘画点 -->
+    <!-- 关于地图的一些成员变量及方法 -->
+    <script type="text/javascript" src="./js/v3/init/v_0_0_1/map_init.js"></script>
+    <!-- 绘画区域封装 -->
+    <script type="text/javascript" src="./js/v3/draw/region/v_0_0_1/region.js"></script>
+</head>
+<body>
+<!--背景地图栏 -->
+<div class="wrap" id="map"></div>
+
+<!--标题栏 -->
+<div class="header">
+    <div class="hdleft">
+        <div class="timemonitor"><img src="image/bgimg/jiance.png" alt=""><span>实时监控</span></div>
+        <ul><li><img src="image/bgimg/xialaicon.png" alt="">
+            <ul class="functionblock">
+                <li><a class="a_dline"><img src="image/funblock/guiji.png" alt=""><span>行驶轨迹</span></a></li>
+                <li><a><img src="image/funblock/moni.png" alt=""><span>模拟路线</span></a></li>
+                <li><a class="fence_button"><img src="image/funblock/weilan.png" alt=""><span>电子围栏</span></a></li>
+                <li><a><img src="image/funblock/baobiao.png" alt=""><span>报表分析</span></a></li>
+                <li><a><img src="image/funblock/baojing.png" alt=""><span>报警管理</span></a></li>
+                <li><a><img src="image/funblock/che.png" alt=""><span>车辆管理</span></a></li>
+                <li><a><img src="image/funblock/rizhi.png" alt=""><span>日志管理</span></a></li>
+                <li><a><img src="image/funblock/shebei.png" alt=""><span>设备管理</span></a></li>
+            </ul></li>
+        </ul>
+    </div>
+    <div class="hdtitle"><h2>高精度地图管理系统</h2></div>
+    <div class="hdright">
+        <div><span>当前集卡车数量:</span><span>1000</span></div>
+        <div><span>报警数量:</span><span>10</span></div>
+        <div class="login"></div>
+    </div>
+</div>
+
+<!--车列表 -->
+<div class="carlistblock">
+    <div class="search">
+        <label>
+            <input type="text" class="input_txt" placeholder="请输入车牌">
+        </label>
+    </div>
+    <div class="carclose"></div>
+    <div class="car">
+        <ul>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+            <li><input type="checkbox" value=""><div></div><span>拖车A123456</span></li>
+        </ul>
+    </div>
+</div>
+
+<!--工具栏 -->
+<div class="toolblock">
+    <ul>
+        <li title="放大" style="opacity: 0"></li>
+        <li title="缩小" style="opacity: 0"></li>
+        <li title="按住shift+alt+鼠标拖动旋转" style="opacity: 0"></li>
+        <li title="恢复初始大小"></li>
+        <li class="ranging" title="测距"></li>
+        <li title="分屏"></li>
+        <li title="空间查询"></li>
+    </ul>
+</div>
+
+<!--添加图层块 -->
+<div class="addlayerblock">
+    <div class="layertop"><span>图层管理</span></div>
+    <div class="layerfun">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="layui-collapse layertree">
+        <div class="layui-colla-item ">
+            <h2 class="layui-colla-title headh2"><span>物理图层</span></h2>
+            <div class="layui-colla-content layui-show">
+
+                <div class="layui-collapse">
+                    <div class="layui-colla-item bodyitem">
+                        <h2 class="layui-colla-title bodyh2"><span>点</span></h2>
+                        <div class="layui-colla-content layui-show">
+                            <p>点一</p>
+                            <p>点二</p>
+                            <p>横三</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-collapse">
+                    <div class="layui-colla-item bodyitem">
+                        <h2 class="layui-colla-title bodyh2"><span>线</span></h2>
+                        <div class="layui-colla-content layui-show">
+                            <p>横一路</p>
+                            <p>横二路</p>
+                            <p>横三路</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-collapse">
+                    <div class="layui-colla-item bodyitem">
+                        <h2 class="layui-colla-title bodyh2"><span>面</span></h2>
+                        <div class="layui-colla-content layui-show">
+                            <p>面一</p>
+                            <p>面二</p>
+                            <p>面三</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title headh2"><span>逻辑图层</span></h2>
+            <div class="layui-colla-content layui-show">
+                <div class="layui-collapse">
+                    <div class="layui-colla-item bodyitem">
+                        <h2 class="layui-colla-title bodyh2"><span>点</span></h2>
+                        <div class="layui-colla-content layui-show">
+                            <p>点一</p>
+                            <p>点二</p>
+                            <p>横三</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--行驶轨迹块 -->
+<div class="driveline">
+    <div class="dlhead">
+        <h3>行驶轨迹</h3>
+        <label></label>
+        <input type="text" id="starttime" >
+        <input type="text" id="endtime">
+        <select><option value="0">车辆牌照</option></select>
+        <button>查询</button>
+        <div class="closedriveline"></div>
+    </div>
+    <div class="dlbody">
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>轨迹号</th>
+                <th>车辆编号</th>
+                <th>车辆牌照</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>总里程</th>
+                <th>平均速度</th>
+                <th>最高车速</th>
+                <th>充电次数</th>
+                <th>轨迹回放</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button onclick="carPlayLine()">回放</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>3</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>4</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>5</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>7</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>8</td>
+                <td>123456</td>
+                <td>京888888</td>
+                <td>2019-9-10 13:12</td>
+                <td>2019-9-10 13:12</td>
+                <td>5km</td>
+                <td>100km/h</td>
+                <td>120km/h</td>
+                <td>2</td>
+                <td><button>回放</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="dlbottom" id="pageBox"></div>
+</div>
+
+
+<!--播放进度 -->
+<div class="carplay">
+    <div class="playnav">
+        <div class="play_close"></div>
+        <div class="play_pointer" id="play_pointer"><!--指针-->
+            <div class="pointer_img">
+                <img src="./image/bgimg/carplaybg/carplay2_01.png" alt="">
+            </div>
+        </div>
+        <span>京888888</span>
+        <div class="play_fun">
+            <div class="play1"></div>
+            <div class="play2"></div>
+            <div class="play3"></div>
+        </div>
+    </div>
+    <div class="playblock">
+        <div class="playspeed">
+            <ul><li>
+                <span>倍速</span>
+                <ul class="select_speed">
+                    <li><a>8X</a></li>
+                    <li><a>4X</a></li>
+                    <li><a>2X</a></li>
+                    <li><a>1X</a></li>
+                    <li><a>0.5X</a></li>
+                    <li><a>0.25X</a></li>
+                </ul>
+            </li></ul>
+        </div>
+        <div class="playbar">
+            <span>2019-7-13 15:00至2019-7-14 15:00</span>
+            <span>00:00</span>
+            <span>1:40/04:00</span>
+            <div id="slideTest1" class="play_slider"></div>
+        </div>
+    </div>
+</div>
+
+<!--模拟路线-->
+<div class="moniline">
+    <div></div>
+    <div></div>
+    <div class="moniline_right">
+        <div class="close_moniline"></div>
+        <button>模拟</button>
+    </div>
+</div>
+
+<!--电子围栏-->
+<div class="fence">
+    <div class="title">
+        <p>电子围栏</p>
+        <p class="fence_close"></p>
+    </div>
+    <div class="add_remove">
+        <div class="add_fence_button">添加</div>
+        <div>删除</div>
+    </div>
+    <div class="sousuo">
+        <label for="fence_search" class="rili"></label>
+        <input id="fence_search" type="text">
+        <div class="chaweilan"></div>
+    </div>
+    <div class="fence_list">
+        <ul>
+            <li>
+                <input id="myCheck" class="myCheck" type="checkbox"><label for="myCheck"></label>
+                <div class="fence_list_right">
+                    <p>9/9 12:00~9/10 13:00</p>
+                    <p>围栏名称</p>
+                    <p><span>可进不可出</span> <i class="fence_edit"></i></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--画围栏-->
+<div class="draw_fence">
+    <div>
+        <p>绘制围栏</p>
+        <p class="draw_fence_close"></p>
+    </div>
+    <div class="draw_fence_button">
+        <div>
+            <input id="duo" type="radio" name="huizhi" checked value="Polygon">
+            <label id="myTip" for="duo">
+            </label>
+        </div>
+        <div>
+            <input id="yuan" type="radio" name="huizhi" value="Circle">
+            <label id="myTip2" for="yuan">
+            </label>
+        </div>
+        <div>
+            <a id="myTip3" href="javascript:;" style="color:#fff" class="clearImg">
+            </a>
+        </div>
+
+    </div>
+</div>
+<!--添加围栏-->
+<div class="add_fence_wrap">
+    <div class="add_fence">
+        <div class="add_fence_title">
+            <p>添加围栏</p>
+            <p class="close_add_fence"></p>
+        </div>
+        <div class="fence_item">
+            <span>围栏名称</span>
+            <input type="text" name="add_fence_name">
+        </div>
+        <div class="fence_item">
+            <span>起始时间</span>
+            <input type="text" id="add_fence_start_time">
+        </div>
+        <div class="fence_item">
+            <span>结束时间</span>
+            <input type="text" id="add_fence_end_time">
+        </div>
+        <div class="fence_item">
+            <span>围栏类型</span>
+            <select name="fence_type" id="fence_type">
+                <option value="1">可进不可出</option>
+                <option value="2">可出不可进</option>
+                <option value="3">不可出不可进</option>
+            </select>
+        </div>
+        <div class="car_check layui-collapse">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">选择车辆</h2>
+                <div class="layui-colla-content layui-show">
+                    <div class="zhuangtai">
+                        <p>忙碌</p>
+                        <p>空闲</p>
+                        <p>离线</p>
+                    </div>
+                    <ul class="add_fence_car_list">
+                        <li>
+                            <input id="add_fence_check" class="myCheck" type="checkbox">
+                            <label for="add_fence_check"></label>
+                            <div class="add_fence_car">
+                                浙A123
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="add_bottom">
+            <div class="insert_add_fence">确定</div>
+            <div class="close_add_fence">取消</div>
+        </div>
+    </div>
+</div>
+
+
+<!--遮罩层-->
+<div class="form-mask"></div>
+<div class="form-top-mask"></div>
+<!--地图弹出框-->
+<div id="popup" class="ol-popup">
+    <span style="cursor:pointer;" id="popup-closer" class="ol-popup-closer"></span>
+    <div id="popup-content">
+    </div>
+</div>
+
+<div id="menu" style="position: absolute;top:180px;left:-2000px;color: white">
+    <label>测量类型：</label>
+    <select id="type" style="background:lightcoral">
+        <option value="length">长度</option>
+        <option value="area">面积</option>
+    </select>
+    <label class="checkbox"><input type="checkbox" id="geodesic">使用大地测量</label>
+</div>
+
+
+</body>
+
+<script src="./js/jquery.cookie.js"></script>
+<script src="./js/browser.js"></script>
+<script src="./js/config.js"></script>
+<script src="./js/popup.js" type="text/babel"></script>
+<script src="./js/layDate-v5.0.9/laydate/laydate.js"></script>
+<script src="./js/compass.js" type="text/javascript"></script>
+<script src="./js/map.js"></script>
+<script src="./layui/layui.js"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/carplay.js"></script>
+<script src="./js/fence.js"></script>
+<script src="./js/ranging.js"></script>
+
+</html>

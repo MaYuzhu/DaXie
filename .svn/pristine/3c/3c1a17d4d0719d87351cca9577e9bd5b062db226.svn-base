@@ -1,0 +1,131 @@
+
+
+
+window.onload=function () {
+
+    //关闭右键弹出菜单栏
+    /*$(document).ready(function(){
+        $('.bodyitem').bind("contextmenu",function(e){
+            return false;
+        });
+    });*/
+
+    //打开车辆列表
+    $('.timemonitor').on('click',function () {
+        $('.carlistblock').css({display:"block"});
+    });
+    //关闭车辆列表
+    $('.carclose').on('click',function () {
+        $('.carlistblock').css({display:"none"});
+    });
+
+
+    //打开行驶轨迹
+    $('.a_dline').on('click',function () {
+        $('.form-mask').fadeIn(100);
+        $('.driveline').slideDown(200);
+    });
+
+    //关闭行驶轨迹
+    $('.closedriveline').on('click',function () {
+        $('.form-mask').fadeOut(100);
+        $('.driveline').slideUp(200);
+    });
+
+    //关闭播放轨迹
+    $('.play_close').on('click',function () {
+        $('.form-top-mask').fadeOut(100);
+        $('.carplay').slideUp(200);
+
+        $('.form-mask').fadeIn(100);
+        $('.driveline').slideDown(200);
+    });
+    //点击播放轨迹
+    $('.play2').on('click',function (){
+        carStartPlay();
+    });
+
+
+    //导航
+    layui.use('element', function(){
+        var element = layui.element;
+        //…
+    });
+
+    //滑动框
+    layui.use('slider', function(){
+
+        var $ = layui.$,
+            slider = layui.slider;
+        //默认滑块
+        slider.render({
+            elem: '#slideTest1',
+        });
+
+    });
+
+    //图层管理展开和关闭树结构
+    $('.bodyitem').each(function (index) {
+        $(this).on('click',function (){
+            $('.addlayerblock i').text(' ')
+            $('.addlayerblock i').css({display: 'inline-block;',width:'15px',height:'15px'})
+            var dipy=$(this).children(".layui-colla-content").css('display');
+            if(dipy==="none"){
+                $(this).find('.layui-icon').css({background: "url(./image/funblock/guan.png) no-repeat"});
+            }else{
+                $(this).find('.layui-icon').css({background: "url(./image/funblock/kai.png) no-repeat"});
+            }
+        });
+        $(this).mousedown(function (e) {
+            if(3===e.which){
+                //alert("右键");
+            }else if(1===e.wh){
+                //alert("左键");
+            }
+        })
+    });
+
+    laydate.render({
+        elem: '#starttime',
+        type: 'datetime'
+        //, format: 'M/d/H:m'
+    });
+    laydate.render({
+        elem: '#endtime',
+        type: 'datetime'
+    });
+    //分页
+    myPageItem();
+
+};
+
+// 图层设置页显示/关闭
+function addlayerdisplay() {
+    $('.addlayerblock').toggle();
+    $('.addlayerblock i').text(' ')
+    $('.addlayerblock i').css({display: 'inline-block;',width:'15px',height:'15px'})
+}
+
+
+// 点击轨迹播放事件
+function carPlayLine(){
+    document.getElementById('play_pointer').style.transform = 'rotateZ(-60deg)';
+    //滑动框
+    layui.use('slider', function(){
+
+        var $ = layui.$,
+            slider = layui.slider;
+        //默认滑块
+        var ins1=slider.render({
+            elem: '#slideTest1'
+        });
+        ins1.setValue(0);
+    });
+    //关闭行驶轨迹
+    $('.form-mask').fadeOut(100);
+    $('.driveline').slideUp(200);
+
+    $('.form-top-mask').fadeIn(100);
+    $('.carplay').slideDown(200);
+
+}

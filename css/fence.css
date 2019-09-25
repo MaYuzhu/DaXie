@@ -1,0 +1,362 @@
+/*电子围栏*/
+.fence{
+    width: 214px;
+    height: 640px;
+    position: absolute;
+    top: 46px;
+    left: 12px;
+    background: url('../image/bgimg/cheliangliebiao.png') no-repeat;
+    background-size: 100% 100%;
+    display: none;
+}
+.title{
+    color: white;
+    height: 42px;
+}
+.title>:nth-child(1){
+    float: left;
+    margin: 13px 0px 0px 15px;
+}
+.title>:nth-child(2){
+    float: right;
+    margin: 10px 8px 0 0;
+    width: 16px;
+    height: 16px;
+    background: url('../image/icon/img.png') 3px 1px no-repeat;
+    cursor: pointer;
+}
+.add_remove{
+    display: flex;
+    justify-content: center;
+}
+.add_remove>div{
+    width: 46%;
+    border: 1px solid #279098;
+    color: #f4f4f4;
+    text-align: center;
+    cursor: pointer;
+}
+.add_remove>div:hover{
+    background: #29a1a9;
+}
+.sousuo{
+    display: flex;
+    border: 1px solid #279098;
+    width: 90%;
+    margin: 10px 0 0 10px;
+}
+.rili{
+    width: 20px;
+    height: 20px;
+    background: url('../image/icon/img.png') -90px 2px no-repeat;
+    margin: 0;
+}
+.sousuo input{
+    width: 140px;
+    height: 20px;
+    border: none;
+    background: rgba(23, 79, 87, 0.9);
+    color: #eeeeee;
+}
+.chaweilan{
+    width: 20px;
+    height: 20px;
+    background: url('../image/icon/img.png') -115px 3px no-repeat;
+    cursor: pointer;
+}
+.fence_list{
+    color: white;
+    width: 90%;
+    height: 530px;
+    /*height: 200px;*/
+    margin: 2px auto;
+    overflow: auto;
+}
+.fence_list::-webkit-scrollbar-track ,.add_fence_car_list::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 5px rgba(87, 152, 140, 0.55);
+    border-radius: 5px;
+    background-color: rgba(183, 209, 212, 0.8);
+}
+.fence_list::-webkit-scrollbar ,.add_fence_car_list::-webkit-scrollbar{
+    width: 5px;
+    background-color: rgba(255,0,0,0);
+}
+/*定义滑块 内阴影+圆角*/
+.fence_list::-webkit-scrollbar-thumb ,.add_fence_car_list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.3);
+    background-color: #298e97;
+}
+.fence_list li{
+    border-bottom: 1px solid #279098;
+    height: 68px;
+    display: flex;
+    align-items: center;
+}
+.fence_list .fence_list_right{
+    float: right;
+    margin-left: 16px;
+    width: 142px;
+}
+.fence_list input{
+    display: none;
+}
+.myCheck + label{
+    margin-left: 10px;
+    background: #113840;
+    border-radius: 1px;
+    border:1px solid #279098;
+    width:14px;
+    height:14px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 14px;
+    /*box-shadow: 0px 0px 3px 0px rgba(255,255,255,.5);*/
+}
+.myCheck:checked + label{
+    background: #113840 url('../image/icon/gou.png') -5px -6px;
+    background-size: 200% 200%;
+}
+
+.fence_list_right>:nth-child(1){
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+}
+.fence_list_right>:nth-child(2){
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+}
+.fence_list_right>:nth-child(3){
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+}
+.fence_edit{
+    width: 20px;
+    height: 20px;
+    background: url('../image/icon/img.png') -57px 3px no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+}
+
+/*添加围栏*/
+.add_fence_wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9997;
+    display: none;
+}
+.add_fence{
+    width: 260px;
+    /*height: 500px;*/
+    background: url('../image/funblock/add_fence_xiao.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 51;
+    top:160px;
+    left: 50%;
+    transform: translate(-50%,0);
+    padding: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.add_fence_title{
+    color: white;
+    height: 30px;
+}
+.add_fence_title>:nth-child(1){
+    float: left;
+    margin: -8px 0 0 86px;
+}
+.add_fence_title>:nth-child(2){
+    float: right;
+    margin: -7px -5px 0 0;
+    width: 16px;
+    height: 16px;
+    background: url('../image/icon/img.png') 3px 1px no-repeat;
+    cursor: pointer;
+}
+.fence_item{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 14px;
+}
+.fence_item input{
+    background: transparent;
+    border: 1px solid #279098;
+    border-radius: 2px;
+    padding-left: 2px;
+}
+.fence_item select{
+    width: 154px;
+    height: 19px;
+    background: url("../image/funblock/guan1.png") no-repeat scroll right center transparent content-box;
+    padding: 0px 2px 0px 6px;
+    border: 1px solid #279098;
+    border-radius: 2px;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
+}
+.fence_item select option{
+    color: white;
+    background: #1d656d;
+}
+.car_check{
+    border: 1px solid #279098;
+    width: 220px;
+    margin: 0 auto;
+}
+.layui-colla-icon{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url('../image/funblock/guan.png') no-repeat;
+    transform: translate(64px,6px) rotate(-90deg);
+}
+.zhuangtai{
+    display: flex;
+    justify-content: space-between;
+    width: 214px;
+}
+.zhuangtai>p{
+    width: 33.33%;
+    border: 1px solid #279098;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+.zhuangtai>p:hover{
+    background: #279098;
+}
+.layui-colla-content{
+    padding: 2px;
+}
+.add_fence_car_list{
+    padding: 10px 0;
+    overflow: auto;
+    height: 200px;
+}
+.add_fence_car_list li{
+    display: flex;
+    padding: 2px 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.add_fence_car_list .myCheck + label{
+    margin: 3px 1px 1px 12px;
+}
+.add_fence_car{
+    margin-left: 20px;
+}
+.add_fence_car_list .myCheck{
+    display: none;
+}
+.add_bottom{
+    width: 118px;
+    margin: 18px auto 2px;
+    display: flex;
+    justify-content: space-between;
+}
+.add_bottom>div{
+    width: 54px;
+    height: 24px;
+    border: 1px solid #279098;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 23px;
+    cursor: pointer;
+}
+.add_bottom>div:hover{
+    background: #279098;
+}
+/*绘制围栏*/
+.draw_fence{
+    position: absolute;
+    top: 96px;
+    right: 17px;
+    width: 194px;
+    height: 88px;
+    background: url("../image/funblock/huizhiweilan.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 12px;
+    display: none;
+}
+.draw_fence>:nth-child(1){
+    color: rgba(255, 255, 255, 0.8);
+}
+.draw_fence>:nth-child(1)>:nth-child(1){
+    width: 100px;
+    margin: -6px 0 0 -1px;
+}
+.draw_fence>:nth-child(1)>:nth-child(2){
+    float: right;
+    margin: -18px -7px 0 0;
+    width: 16px;
+    height: 16px;
+    background: url('../image/icon/img.png') 3px 1px no-repeat;
+    cursor: pointer;
+}
+.draw_fence_button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.draw_fence_button>div>label{
+    width: 50px;
+    height: 40px;
+    border: 1px solid #00a6a6;
+    cursor: pointer;
+}
+.draw_fence_button>div>a{
+    display: block;
+    width: 50px;
+    height: 40px;
+    border: 1px solid #00a6a6;
+    cursor: pointer;
+}
+.draw_fence_button>:nth-child(1)>label{
+    background: url('../image/funblock/huizhi.png') -1px -2px no-repeat;
+}
+.draw_fence_button>:nth-child(2)>label{
+    background: url('../image/funblock/huizhi.png') -1px -45px no-repeat;
+}
+.draw_fence_button>:nth-child(3)>a{
+    background: url('../image/funblock/huizhi.png') -1px -88px no-repeat;
+}
+.draw_fence_button>:nth-child(1)>label:hover{
+    background: url('../image/funblock/huizhi.png') -1px -131px no-repeat;
+}
+.draw_fence_button>:nth-child(2)>label:hover{
+    background: url('../image/funblock/huizhi.png') 0px -174px no-repeat;
+}
+.draw_fence_button>:nth-child(3)>a:hover{
+    background: url('../image/funblock/huizhi.png') -1px -217px no-repeat;
+}
+
+.draw_fence_button #duo:checked + label{
+    background: url('../image/funblock/huizhi.png') -1px -131px no-repeat;
+}
+.draw_fence_button #yuan:checked + label{
+    background: url('../image/funblock/huizhi.png') 0px -174px no-repeat;
+}
+input[name='huizhi'] {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

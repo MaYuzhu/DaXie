@@ -1,0 +1,185 @@
+
+
+.carplay{
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+/*指示框*/
+.playnav{
+    z-index: 9998;
+    position: absolute;
+    height: 120px;
+    width: 181px;
+    background: url(../image/bgimg/carplaybg/carplaybg1.png);
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.playnav>span{
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    color: #eee;
+    font: 12px "Microsoft YaHei UI";
+    left: 50px;
+    top: 50px;
+
+}
+
+
+.play_fun{
+    position: absolute;
+    height: 25px;
+    width: 96px;
+    top: 80px;
+    left: 42px;
+}
+.play_fun>div{
+    width: 30px;
+    height: 25px;
+    background: #01AAED;
+    float: left;
+    margin-right: 3px;
+}
+.play_fun>:nth-child(3){
+    margin-right: 0;
+}
+.play_fun>div:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+/*滑动框*/
+.playblock{
+    z-index: 9997;
+    position: absolute;
+    width: 100%;
+    height: 62px;
+    background: url(../image/bgimg/carplaybg/carplaybg.png);
+    bottom: 0;
+    left: 0;
+}
+.play_close{
+    position: absolute;
+    width: 14px;
+    height: 15px;
+    background:url(../image/bgimg/guanbi.png) no-repeat;
+    background-size: 100% 100%;
+    left: 5px;
+    top: 0;
+}
+.play_close:hover{
+    cursor: pointer;
+}
+
+/*指针*/
+.play_pointer{
+    width: 21px;
+    height: 24px;
+    transform: rotateZ(-60deg);  /*-60deg ~ 150deg*/
+    transform-origin: 90px 90px;
+}
+.pointer_img{
+    width: 21px;
+    height: 21px;
+    transform: translate(22px,22px);
+}
+.pointer_img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*滑动框*/
+.playbar{
+    position: absolute;
+    width: 83%;
+    height: 62px;
+    bottom: 0;
+    left: 270px;
+    font-size: 0;
+}
+.playbar>span{
+    position: absolute;
+    color: #eee;
+    font: 12px "Microsoft YaHei UI";
+}
+.playbar>:nth-child(1){
+    top: 5px;
+}
+.playbar>:nth-child(2){
+    top: 18px;
+}
+.playbar>:nth-child(3){
+    top: 18px;
+    right: 10px;
+}
+.play_slider{
+    position: absolute;
+    width: 100%;
+    top: 38px;
+}
+
+/*倍速*/
+.playspeed{
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 20px;
+    left: 200px;
+    border-radius: 5px;
+    text-align: center;
+    background: #1F3737;
+}
+.playspeed>ul{
+    width: 50px;
+    height: 30px;
+    text-align: center;
+}
+.playspeed>ul>li>span{
+    color: #eee;
+    font: 14px/30px "Microsoft YaHei UI";
+}
+.playspeed>ul>li:hover{
+    cursor: pointer;
+}
+.playspeed>ul>li:hover .select_speed{
+    top: -120px;
+    left: 0;
+}
+.select_speed{
+    position: absolute;
+    height: 120px;
+    width: 50px;
+    border-radius: 5px;
+    padding: 0;
+    list-style: none;
+    top: -9999px;
+    left: -9999px;
+}
+.select_speed>li{
+    display: block;
+    width: 50px;
+    height: 20px;
+    background: #1F3737;
+    text-align: center;
+}
+.select_speed>li:hover{
+    background: #18494E;
+}
+.select_speed>li>a{
+    color: #eee;
+    font: 12px/20px "Microsoft YaHei UI";
+    text-decoration: none;
+}

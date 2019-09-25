@@ -1,0 +1,33 @@
+
+/* 指北针 */
+.ol-compass {
+    position: absolute;
+    bottom: 70px;
+    height: 40px;
+    width: 40px;
+    right: 6px;
+    opacity: 0.8;
+    background:url(../image/bgimg/dituicon.png) 0 0 no-repeat;
+    /*transform: rotateZ(0deg);*/
+}
+.ol-compass .reverse{
+    height: 40px;
+    width: 13px;
+    border: 0;
+    outline:none;
+    background: transparent;
+}
+.ol-compass .recovery{
+    height: 40px;
+    width: 13px;
+    border: 0;
+    outline:none;
+    background: transparent;
+}
+.ol-compass .forword{
+    height: 40px;
+    width: 13px;
+    border: 0;
+    outline:none;
+    background: transparent;
+}

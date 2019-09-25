@@ -1,0 +1,144 @@
+
+
+.driveline{
+    z-index: 9998;
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    min-width: 1080px;
+    height: 800px;
+    background: url(../image/bgimg/drivelinebg.png) no-repeat;
+    background-size: 100% 100%;
+}
+.dlhead{
+    width: 100%;
+    height: 80px;
+}
+.dlhead>:nth-child(1){
+    color: #eee;
+    font: 20px/35px "Microsoft YaHei UI";
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    top: 30px;
+}
+.dlhead>:nth-child(2){
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 620px;
+    top: 32px;
+    background: url(../image/bgimg/drivelinetime.png) no-repeat;
+    background-size: 100% 100%;
+}
+.dlhead>:nth-child(3), .dlhead>:nth-child(4){
+    position: absolute;
+    height: 30px;
+    background: transparent;
+    border: 1px #1D6069 solid;
+    border-radius: 5px;
+    outline: none;
+    color: #eee;
+    top: 30px;
+}
+.dlhead>:nth-child(3){
+    right: 460px;
+}
+.dlhead>:nth-child(4){
+    right: 290px;
+}
+.dlhead>:nth-child(5){
+    position: absolute;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    background: transparent;
+    color: #eee;
+    border: 1px #1D6069 solid;
+    outline: none;
+    top: 30px;
+    right: 150px;
+}
+.dlhead>:nth-child(6){
+    position: absolute;
+    height: 30px;
+    width: 60px;
+    border-radius: 2px;
+    background:linear-gradient(to right, #112D31 , #1C5055); ;
+    color: #eee;
+    font: 15px/30px "Microsoft YaHei UI";
+    border: 0;
+    top: 30px;
+    right: 60px;
+}
+.dlhead>:nth-child(7){
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background:url(../image/bgimg/drivelineexit.png) no-repeat;
+    top: 10px;
+    right: 10px;
+}
+.dlhead>:nth-child(7):hover{
+    background:url(../image/bgimg/drivelineexit1.png) no-repeat;
+    cursor: pointer;
+}
+
+
+.dlbody{
+    width: 100%;
+    height: 670px;
+}
+.dlbody>table{
+    width: 98%;
+    margin: 0 auto;
+}
+.dlbody>table th {
+    height: 50px;
+    text-align: center;
+    color: #eee;
+    font: 15px/40px "Microsoft YaHei UI";
+}
+.dlbody>table td {
+    color: #eee;
+    font: 14px/48px "Microsoft YaHei UI";
+    height: 48px;
+    text-align: center;
+}
+.dlbody>table>tbody>tr>td>button{
+    display: block;
+    height: 30px;
+    width: 100px;
+    border: 0;
+    margin: 0 auto;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+    background:linear-gradient(to right, #112D31 , #1C5055);
+}
+.dlbody>table>tbody>tr>td>button:hover{
+    background:linear-gradient(to right, #1C5055,#112D31);
+}
+.dlbottom{
+    width: 400px;
+    height: 50px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    text-align: center;
+}
+.dlbottom>ul{
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+#pageBox>ul>li>a,#pageBox>ul>li,#pageBox>ul,#pageBox>ul>li>span{
+    background: transparent;
+    border: 0;
+}

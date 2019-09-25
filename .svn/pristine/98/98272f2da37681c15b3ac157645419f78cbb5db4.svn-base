@@ -1,0 +1,44 @@
+
+
+.moniline{
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 80px;
+    top: 100px;
+    left: 100px;
+    background: #1D6069;
+}
+.moniline_right{
+    position: relative;
+    float: right;
+    height: 80px;
+    width: 60px;
+}
+.close_moniline{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background:url(../image/bgimg/drivelineexit1.png) no-repeat;
+    top: 2px;
+    right: 2px;
+}
+.close_moniline:hover{
+    background:url(../image/bgimg/drivelineexit.png) no-repeat;
+    cursor: pointer;
+}
+.moniline_right>button{
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    border-radius: 2px;
+    background:linear-gradient(to right, #112D31 , #1C5055);
+    color: #eee;
+    font: 15px/30px "Microsoft YaHei UI";
+    border: 0;
+    top: 40px;
+    right: 5px;
+}
+.moniline_right>button:hover{
+    background:linear-gradient(to right,#1C5055, #112D31);
+}

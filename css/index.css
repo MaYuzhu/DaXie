@@ -1,0 +1,495 @@
+
+
+
+html,body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    min-width: 1200px;
+    position: relative;
+}
+.wrap{
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+}
+/* 导航栏 */
+.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 37px;
+    background: url(../image/bgimg/top_01.png);
+    background-size: 100% 100%;
+}
+
+/* 功能块 */
+.hdleft{
+    width: 134px;
+    height: 37px;
+    padding: 0;
+    position: absolute;
+    background: url(../image/bgimg/top2.png) no-repeat;
+    left: 50px;
+}
+.hdleft>:nth-child(1){
+    height: 25px;
+    width: 100px;
+    margin:5px 0;
+    border-right: 1px #013d55 solid;
+    float: left;
+}
+.hdleft:hover{
+    cursor: pointer;
+}
+.hdleft>:nth-child(1):hover{
+
+}
+.hdleft>ul{
+    width: 30px;
+    height: 30px;
+    margin: 5px 0 0 0;
+    text-align: center;
+    float: left;
+    position: relative;
+    padding: 0;
+    list-style: none;
+}
+.hdleft>ul>li{
+    position: relative;
+    display: block;
+    height: 30px;
+}
+
+.hdleft>:nth-child(1)>img{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+.hdleft>:nth-child(1)>span{
+    position: absolute;
+    color: #eee;
+    font: 16px "Microsoft YaHei UI";
+    top: 8px;
+    left: 30px;
+}
+
+.hdleft>ul>li>img{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.hdleft>ul>li:hover{
+    cursor: pointer;
+}
+.hdleft>ul>li:hover .functionblock{
+    top: 30px;
+    left: -100px;
+}
+
+/* 功能栏 */
+.functionblock{
+    z-index: 999;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    width: 132px;
+    height: 267px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    background: url(../image/bgimg/xialacaidan.png) no-repeat;
+}
+.functionblock>li{
+    display: block;
+    height: 33px;
+}
+.functionblock>li>a{
+    display: block;
+    color: #eee;
+    font: 14px/33px "Microsoft YaHei UI";
+    text-decoration: none;
+    text-align: center;
+}
+.functionblock>li>a>img{
+    vertical-align: middle
+}
+.functionblock>li:hover{
+    cursor: pointer;
+    background: #013d55;
+}
+
+/* 标题 */
+.hdtitle{
+    width: 200px;
+    height: 38px;
+    float: left;
+    margin: 0 0 0 220px;
+}
+.hdtitle h2{
+    color: #eee;
+    font: 16px/41px "Microsoft YaHei UI";
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+/* 状态 */
+.hdright{
+    float: right;
+}
+.hdright>:first-child{
+    position: absolute;
+    right: 200px;
+}
+.hdright>:first-child>:first-child{
+    color: #bbb;
+    font: 14px/41px "Microsoft YaHei UI";
+}
+.hdright>:first-child>:last-child{
+    color: green;
+    font: 14px/41px "Microsoft YaHei UI";
+    margin: 0 10px;
+}
+.hdright>:nth-child(2){
+    position: absolute;
+    right: 80px;
+}
+.hdright>:nth-child(2)>:first-child{
+    color: #bbb;
+    font: 14px/41px "Microsoft YaHei UI";
+}
+.hdright>:nth-child(2)>:last-child{
+    color: red;
+    font: 14px/41px "Microsoft YaHei UI";
+    margin: 0 10px;
+}
+/* 登录 */
+.login{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 20px;
+    top: 10px;
+    background: url(../image/bgimg/yonghu.png) no-repeat;
+}
+
+/* 车辆列表 */
+.carlistblock{
+    display: none;
+    z-index: 998;
+    position: absolute;
+    width: 184px;
+    height: 573px;
+    margin: 0;
+    padding: 0;
+    top: 40px;
+    left: 20px;
+    background: url(../image/bgimg/cheliangliebiao.png) no-repeat;
+}
+.search{
+    width: 100px;
+    height: 16px;
+    padding: 0;
+    margin: 10px auto;
+    border:1px solid #666;
+    background:url(../image/bgimg/sousuo.png) no-repeat;
+    font-size: 0;
+    border-radius: 5px;
+}
+.input_txt{
+    width: 80px;
+    height: 15px;
+    padding: 0;
+    border:0;
+    margin:0 0 0 19px;
+    outline:none;
+    color: white;
+    font: 12px/15px "Microsoft YaHei UI";
+    background: #285A61;
+}
+input::placeholder{
+    color:#ddd;
+}
+.carclose{
+    position: absolute;
+    width: 9px;
+    height: 10px;
+    background:url(../image/bgimg/guanbi.png) no-repeat;
+    right: 10px;
+    top: 10px;
+}
+.carclose:hover{
+    cursor: pointer;
+}
+
+.car{
+    width: 170px;
+    height: 530px;
+    margin: 0 auto;
+    padding: 0;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.car>ul{
+    width: 170px;
+    height: 530px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+.car>ul>li{
+    height: 30px;
+    position: relative;
+}
+.car>ul>li>input{
+    position: absolute;
+    top:5px;
+    left: 15px;
+}
+.car>ul>li>div{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 5px;
+    left: 35px;
+    background: url(../image/funblock/che.png) no-repeat;
+}
+.car>ul>li>span{
+    position: absolute;
+    left: 55px;
+    color: white;
+    font: 13px/30px "Microsoft YaHei UI";
+}
+.car>ul>li:hover{
+    cursor: pointer;
+    background: #7b98bc;
+}
+
+
+/* 添加图层块 */
+.addlayerblock{
+    display: none;
+    position: absolute;
+    width: 179px;
+    height: 525px;
+    margin: 0;
+    padding: 0;
+    top: 120px;
+    right: 60px;
+    background: url(../image/bgimg/tucengbg.png) no-repeat;
+}
+.layertop{
+    width: 170px;
+    height: 25px;
+    margin: 11px 5px 0 5px;
+    background: #1D6069;
+}
+.layertop>span{
+    padding-left: 10px;
+    color: #ddd;
+    font: 14px/25px "Microsoft YaHei UI";
+}
+.layerfun{
+    width: 170px;
+    height: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+.layerfun>:nth-child(1){
+    width: 20px;
+    height: 15px;
+    margin-left: 10px;
+    float: left;
+    background: url(../image/funblock/tianjia.png) no-repeat;
+}
+.layerfun>:nth-child(2){
+    width: 20px;
+    height: 15px;
+    float: left;
+    background: url(../image/funblock/xiugai.png) no-repeat;
+}
+.layerfun>:nth-child(3){
+    width: 20px;
+    height: 15px;
+    float: left;
+    background: url(../image/funblock/shanchu.png) no-repeat;
+}
+.layerfun>:nth-child(1):hover{
+    cursor: pointer;
+}
+.layerfun>:nth-child(2):hover{
+    cursor: pointer;
+}
+.layerfun>:nth-child(3):hover{
+    cursor: pointer;
+}
+
+.layertree{
+    width: 170px;
+    height: 460px;
+    margin: 10px 5px 0 5px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.headh2>i{
+    margin-top: 5px;
+    height: 16px;
+    background: url(../image/funblock/wenjianjia.png) no-repeat;
+}
+.headh2>span{
+    padding-left: 20px;
+}
+.bodyh2>span{
+    padding-left: 14px;
+}
+.bodyh2>i{
+    margin-top: 6px;
+    height: 15px;
+    background: url(../image/funblock/kai.png) no-repeat;
+}
+.layui-show>p{
+    color: #ddd;
+    font: 14px/15px "Microsoft YaHei UI";
+    padding-left: 20px;
+}
+
+.headh2:hover{
+    background: #304C4F;
+}
+.bodyh2:hover{
+    background: #304C4F;
+}
+.layui-show>p:hover{
+    cursor: pointer;
+    background: #304C4F;
+}
+
+
+
+
+/* 图层操作模块 */
+.toolblock{
+    position: absolute;
+    width: 200px;
+    height: 43px;
+    margin: 0;
+    padding: 0;
+    top: 45px;
+    right: 14px;
+    background: url(../image/bgimg/ditugongju.png) no-repeat;
+    background-size: 100% 100%;
+}
+.toolblock ul{
+    display: flex;
+    margin: 9px 0 0 10px;
+}
+.toolblock ul>li{
+    width: 26px;
+    height: 26px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+.toolblock ul>:nth-child(4){
+    background: url(../image/icon/right_icon.png) no-repeat -94px 2px;
+    cursor: pointer;
+}
+.toolblock ul>:nth-child(5){
+    background: url(../image/icon/right_icon.png) no-repeat -126px 3px;
+    cursor: pointer;
+}
+.toolblock ul>:nth-child(6){
+    background: url(../image/icon/right_icon.png) no-repeat -157px 3px;
+    cursor: pointer;
+}
+.toolblock ul>:nth-child(7){
+    background: url(../image/icon/right_icon.png) no-repeat -188px 3px;
+    cursor: pointer;
+}
+.toolblock ul>li:hover{
+    border: 1px solid #00b8b8;
+}
+#map .ol-control button{
+    width: 26px;
+    height: 26px;
+    border-radius: 2px;
+    margin: 0;
+}
+#map .ol-zoom{
+    top: 52px;
+    left: auto;
+    right: 152px;
+    bottom: auto;
+    display: flex;
+    z-index: 999;
+    background: transparent;
+}
+#map .ol-rotate{
+    z-index: 999;
+    top: 52px;
+    right: 126px;
+    background: transparent;
+}
+#map .ol-zoom-in{
+    border: 1px solid rgba(255, 0, 0, 0);
+    background: url(../image/icon/right_icon.png) no-repeat 3px 3px;
+}
+#map .ol-zoom-in:hover{
+    border: 1px solid #00b8b8;
+}
+#map .ol-zoom-out{
+    border: 1px solid rgba(255, 0, 0, 0);
+    background: url(../image/icon/right_icon.png) no-repeat -30px 3px;
+}
+#map button[type='button']:hover{
+    border: 1px solid #00b8b8;
+}
+#map .ol-rotate-reset{
+    border: 1px solid rgba(255, 0, 0, 0);
+    background: transparent;
+}
+
+
+/* form-mask */
+
+.form-mask{
+    z-index: 9997;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    display: none
+}
+.form-top-mask{
+    z-index: 9997;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    display: none
+}
+
+
+
+
+/* 指北针 */
+/*.ol-compass {
+    position: absolute;
+    bottom: 70px;
+    height: 40px;
+    width: 40px;
+    right: 6px;
+    opacity: 0.8;
+    background:url(../image/bgimg/dituicon.png) 0 0 no-repeat;
+    !*transform: rotateZ(0deg);*!
+}*/

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="icon" type="image/x-icon" href="./image/favicon.ico"/>
+    <link rel="stylesheet" href="./css/reset.css">
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .wrap{
+            width: 100%;
+            height: 100%;
+            background: url("./image/img/bg.jpg") no-repeat;
+            background-size: 100% 100%;
+            min-width: 1000px;
+            position: relative;
+        }
+        .content{
+            width: 230px;
+            height: 240px;
+            /*background: rgba(255, 192, 203, 0.5);*/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .title{
+            width: 230px;
+            height: 48px;
+            background: url("./image/img/title.png") no-repeat;
+            background-size: 100% 100%;
+        }
+        .user,.pwd{
+            width: 230px;
+            height: 34px;
+            border-radius: 5px;
+            background: url("./image/img/bg_green_0.png") no-repeat;
+            background-size: 100% 100%;
+            margin-top: 20px;
+            display: flex;
+            padding: 6px 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .user input,.pwd input{
+            width: 170px;
+            border: none;
+            background: rgba(255, 255, 255, 0);
+            padding-left: 3px;
+        }
+        .user>:nth-child(1),.pwd>:nth-child(1){
+            width: 28px;
+            height: 22px;
+            background: url("./image/img/user.png") no-repeat center center;
+            border-right: 1px solid #7eadbc;
+        }
+        .pwd>:nth-child(1){
+            background: url("./image/img/pwd.png") no-repeat center center;
+        }
+        .user>:nth-child(3),.pwd>:nth-child(3){
+            width: 28px;
+            height: 22px;
+            background: url("./image/img/close.png") no-repeat center center;
+            background-size: 54% 72%;
+            cursor: pointer;
+            display: none;
+        }
+        .pwd>:nth-child(4),.user>:nth-child(4){
+            width: 200px;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(0,-50%);
+            color: #cf0000;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .login{
+            width: 95px;
+            height: 30px;
+            border-radius: 5px;
+            background: url("./image/img/bg_green.png") no-repeat center;
+            background-size: 110% 190%;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            float: right;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 1px 1px 10px -2px #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <p class="title"></p>
+            <div class="user">
+                <p></p>
+                <input class='username' type="text">
+                <p></p>
+                <p class="user_message"></p>
+            </div>
+            <div class="pwd">
+                <p></p>
+                <input class='password' type="text">
+                <p></p>
+                <p class="psd_message"></p>
+            </div>
+            <div class="login">登&nbsp;&nbsp;&nbsp;录</div>
+        </div>
+    </div>
+</body>
+<script src="./js/config.js"></script>
+<script>
+    $(function () {
+        $('.username').blur(function () {
+            if($(".username").val()){
+                $(".user_message").html("");
+            }else {
+                $(".user_message").html("请输入用户名");
+            }
+        })
+        $('.password').blur(function () {
+            if($(".password").val()){
+                $(".psd_message").html("");
+            }else {
+                $(".psd_message").html("请输入密码");
+            }
+        })
+        $(".login").click(function(){
+            var data = {}
+            data.username = $(".username").val();
+            data.password = $(".password").val();
+
+            $(".username,.password").html("");
+
+            if(!data.username){
+                $(".user_message").html("请输入用户名");
+                return;
+            }else if(!data.password){
+                $(".psd_message").html("请输入密码");
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                async: false,
+                cache:true,
+                url: ajax_url + 'auth/login',
+                data:JSON.stringify({username:data.username,password:data.password}),
+                //data:JSON.stringify({"username":"root","password":"123456"}),
+                dataType: 'json',
+                contentType: 'application/json',
+                xhrFields:{
+                    withCredentials:true
+                },
+                crossDomain: true,
+                success: function(json){
+                    //console.log(json)
+                    if(json){
+                        location.href="./index.html";
+                    }else{
+                        $(".psd_message").html("帐号或密码错误")
+                    }
+                },
+                error: function(){
+                    $(".psd_message").html("帐号或密码错误")
+                }
+            });
+        });
+        $(document).keyup(function(event){
+            if(event.keyCode == 13){
+                $(".login").click()
+            }
+        })
+    })
+</script>
+</html>
