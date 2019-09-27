@@ -158,6 +158,7 @@ $(function () {
                 map.removeInteraction(draw_ranging);
                 map.removeEventListener('pointermove')
                 $('.clear_ranging_line').click(function () {
+                    //vector_ranging.getSource().removeFeature(evt.feature)
                     vector_ranging.getSource().clear();
                     $('.ol-overlay-container').hide()
                 })

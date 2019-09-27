@@ -31,29 +31,40 @@
     font: 12px "Microsoft YaHei UI";
     left: 50px;
     top: 50px;
-
 }
-
 
 .play_fun{
     position: absolute;
     height: 25px;
     width: 96px;
-    top: 80px;
+    top: 86px;
     left: 42px;
 }
 .play_fun>div{
     width: 30px;
     height: 25px;
-    background: #01AAED;
     float: left;
     margin-right: 3px;
+    border-radius: 2px;
 }
 .play_fun>:nth-child(3){
     margin-right: 0;
 }
 .play_fun>div:hover{
     cursor: pointer;
+}
+.play_fun .play1{
+    background: rgba(0,0,0,.8) url("../image/icon/kuaijin.png") no-repeat 5px 2px;
+    background-size: 75% 80%;
+    transform: rotate(180deg);
+}
+.play_fun .play3{
+    background: rgba(0,0,0,.8) url("../image/icon/kuaijin.png") no-repeat 5px 2px;
+    background-size: 80% 80%;
+}
+.play_fun .play2{
+    background: rgba(0,0,0,.8) url("../image/icon/play_but.png") no-repeat 8px 4px;
+    background-size: 54% 70%;
 }
 
 

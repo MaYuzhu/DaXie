@@ -101,7 +101,7 @@
 .fence_list input{
     display: none;
 }
-.myCheck + label{
+.myCheck + label,.myCheckCar + label{
     margin-left: 10px;
     background: #113840;
     border-radius: 1px;
@@ -114,7 +114,7 @@
     line-height: 14px;
     /*box-shadow: 0px 0px 3px 0px rgba(255,255,255,.5);*/
 }
-.myCheck:checked + label{
+.myCheck:checked + label,.myCheckCar:checked + label{
     background: #113840 url('../image/icon/gou.png') -5px -6px;
     background-size: 200% 200%;
 }
@@ -160,7 +160,7 @@
     background-size: 100% 100%;
     position: absolute;
     z-index: 51;
-    top:160px;
+    top:200px;
     left: 50%;
     transform: translate(-50%,0);
     padding: 16px;
@@ -247,13 +247,13 @@
     padding: 2px 10px;
     color: rgba(255, 255, 255, 0.7);
 }
-.add_fence_car_list .myCheck + label{
+.add_fence_car_list .myCheckCar + label{
     margin: 3px 1px 1px 12px;
 }
 .add_fence_car{
     margin-left: 20px;
 }
-.add_fence_car_list .myCheck{
+.add_fence_car_list .myCheckCar{
     display: none;
 }
 .add_bottom{
@@ -323,31 +323,34 @@
     background: url('../image/funblock/huizhi.png') -1px -2px no-repeat;
 }
 .draw_fence_button>:nth-child(2)>label{
-    background: url('../image/funblock/huizhi.png') -1px -45px no-repeat;
+    background: url('../image/funblock/huizhi.png') -1px -46px no-repeat;
 }
 .draw_fence_button>:nth-child(3)>a{
-    background: url('../image/funblock/huizhi.png') -1px -88px no-repeat;
+    background: url('../image/funblock/huizhi.png') -1px -92px no-repeat;
 }
 .draw_fence_button>:nth-child(1)>label:hover{
-    background: url('../image/funblock/huizhi.png') -1px -131px no-repeat;
+    background: url('../image/funblock/huizhi.png') -1px -136px no-repeat;
 }
 .draw_fence_button>:nth-child(2)>label:hover{
-    background: url('../image/funblock/huizhi.png') 0px -174px no-repeat;
+    background: url('../image/funblock/huizhi.png') 0px -180px no-repeat;
 }
 .draw_fence_button>:nth-child(3)>a:hover{
-    background: url('../image/funblock/huizhi.png') -1px -217px no-repeat;
+    background: url('../image/funblock/huizhi.png') -1px -226px no-repeat;
 }
 
 .draw_fence_button #duo:checked + label{
-    background: url('../image/funblock/huizhi.png') -1px -131px no-repeat;
+    background: url('../image/funblock/huizhi.png') -1px -136px no-repeat;
 }
 .draw_fence_button #yuan:checked + label{
-    background: url('../image/funblock/huizhi.png') 0px -174px no-repeat;
+    background: url('../image/funblock/huizhi.png') 0px -180px no-repeat;
 }
 input[name='huizhi'] {
-    display: block;
+    display: none;
 }
-
+/*layer_msg样式*/
+body .layui-layer-content{
+    background: rgba(18, 21, 17, 0.9);
+}
 
 
 

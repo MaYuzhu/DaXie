@@ -12,7 +12,7 @@
 		r.borderWidth = 1;
 		r.borderShineColor = "#96bffd";
 		r.borderShineWidth = 2;
-		r.fillOpacity = 0.8;
+		r.fillOpacity = 0.6;
 		r.layerIndex = 0;
 		r.addLayer = false;
 	}
@@ -88,6 +88,7 @@
 	 * 清除指定feature
 	 */
 	region.prototype.removeFeature = function(ids){
+		console.log(ids)
 		var ary = r.auxiliary,t = this,
 		queryIds = r.queryId,
 		vector = null,vectorSource = null,features = null,

@@ -40,11 +40,6 @@ window.onload=function () {
         $('.form-mask').fadeIn(100);
         $('.driveline').slideDown(200);
     });
-    //点击播放轨迹
-    $('.play2').on('click',function (){
-        carStartPlay();
-    });
-
 
     //导航
     layui.use('element', function(){
@@ -86,12 +81,12 @@ window.onload=function () {
     });
 
     laydate.render({
-        elem: '#starttime',
+        elem: '#starttime_history',
         type: 'datetime'
         //, format: 'M/d/H:m'
     });
     laydate.render({
-        elem: '#endtime',
+        elem: '#endtime_history',
         type: 'datetime'
     });
     //分页

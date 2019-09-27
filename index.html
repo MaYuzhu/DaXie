@@ -17,17 +17,7 @@
     <link rel="stylesheet" href="./css/popup_alert.css"><!--自定义弹窗-->
 
     <script src="./js/jquery-1.11.3.min.js"></script>
-    <!-- 地图窗口 -->
-    <script type="text/javascript" src="./js/v3/base/v_0_0_1/map.js"></script>
-
-    <!-- 封装的前端util -->
-    <script type="text/javascript" src="./js/v3/auxiliary.js"></script>
-
-    <!-- 绘画点 -->
-    <!-- 关于地图的一些成员变量及方法 -->
-    <script type="text/javascript" src="./js/v3/init/v_0_0_1/map_init.js"></script>
-    <!-- 绘画区域封装 -->
-    <script type="text/javascript" src="./js/v3/draw/region/v_0_0_1/region.js"></script>
+    <script src="./js/OpenLayers/ol.js"></script>
 </head>
 <body>
 <!--背景地图栏 -->
@@ -96,7 +86,7 @@
         <li title="按住shift+alt+鼠标拖动旋转" style="opacity: 0"></li>
         <li title="恢复初始大小"></li>
         <li class="ranging" title="测距"></li>
-        <li title="分屏"></li>
+        <li class="change_map" title="地图切换"></li>
         <li title="空间查询"></li>
     </ul>
 </div>
@@ -169,8 +159,8 @@
     <div class="dlhead">
         <h3>行驶轨迹</h3>
         <label></label>
-        <input type="text" id="starttime" >
-        <input type="text" id="endtime">
+        <input type="text" id="starttime_history" >
+        <input type="text" id="endtime_history">
         <select><option value="0">车辆牌照</option></select>
         <button>查询</button>
         <div class="closedriveline"></div>
@@ -192,8 +182,8 @@
                 <th>轨迹回放</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
+            <tbody class="history_car_list">
+                <tr>
                 <td>1</td>
                 <td>1</td>
                 <td>123456</td>
@@ -206,7 +196,7 @@
                 <td>2</td>
                 <td><button onclick="carPlayLine()">回放</button></td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>2</td>
                 <td>2</td>
                 <td>123456</td>
@@ -296,7 +286,7 @@
                 <td>120km/h</td>
                 <td>2</td>
                 <td><button>回放</button></td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
     </div>
@@ -361,7 +351,7 @@
     </div>
     <div class="add_remove">
         <div class="add_fence_button">添加</div>
-        <div>删除</div>
+        <div class="remove_fence_button">删除</div>
     </div>
     <div class="sousuo">
         <label for="fence_search" class="rili"></label>
@@ -435,7 +425,7 @@
         <div class="car_check layui-collapse">
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">选择车辆</h2>
-                <div class="layui-colla-content layui-show">
+                <div class="layui-colla-content">
                     <div class="zhuangtai">
                         <p>忙碌</p>
                         <p>空闲</p>
